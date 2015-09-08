@@ -71,15 +71,15 @@
 	
 	<!-- Controllers -->
 	<bean id="userController" class="kawahara.controllers.UserController">
-		<property name="userService" ref="userService"></property>
+		<property name="userService" value="kawahara.services.UserService"></property>
 	</bean>
 	<bean id="questionController" class="kawahara.controllers.QuestionController">
 		<property name="questionService" ref="questionService"></property>
-		<property name="answerService" ref="answerService"></property>
-		<property name="userService" ref="userService"></property>
+		<property name="answerService" value="kawahara.services.AnswerService"></property>
+		<property name="userService" value="kawahara.services.UserService"></property>
 	</bean>
 	<bean id="searchController" class="kawahara.controllers.SearchController">
-		<property name="searchService" ref="searchService"></property>
+		<property name="searchService" value="kawahara.services.SearchService"></property>
 	</bean>
 	
 	<!-- Tests -->

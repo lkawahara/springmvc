@@ -11,7 +11,7 @@ import testmvc.HelloController;
 
 public class HelloControllerTest {
 
-	@Test
+	//@Test
 	public void test() throws ServletException, IOException {
 		HelloController controller = new HelloController();
 		ModelAndView modelAndView = controller.handleRequest(null, null);

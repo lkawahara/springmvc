@@ -25,7 +25,7 @@ public class DBTest {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Test
+	//@Test
 	public void testAddGet() {
 		QuestionModel model = new QuestionModel("username", "heading", "value");
 		Session session = sessionFactory.openSession();
@@ -43,7 +43,7 @@ public class DBTest {
 		Assert.assertEquals(model, testGet);
 	}
 
-	@Test
+	//@Test
 	public void testUpdate() {
 		String newHeading = "newHeading", newUsername = "newUsername", newValue = "newValue";
 
@@ -80,7 +80,7 @@ public class DBTest {
 		Assert.assertEquals(shouldBeUpdated.getQuestion(), newValue);
 	}
 
-	@Test
+	//@Test
 	public void testDelete() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

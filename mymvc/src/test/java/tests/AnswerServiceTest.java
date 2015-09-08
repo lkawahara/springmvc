@@ -26,7 +26,7 @@ public class AnswerServiceTest {
 		answerDAO = new AnswerDAO(sf);
 	}
 
-	@Test
+	//@Test
 	public void testCreate() {
 		AnswerService service = new AnswerService(answerDAO);
 		AnswerModel model = new AnswerModel(newQ, "test answer", "username");
@@ -35,7 +35,7 @@ public class AnswerServiceTest {
 		Assert.assertTrue(service.contains(model));
 	}
 
-	@Test
+	//@Test
 	public void testReadItemExists() {
 		AnswerService service = new AnswerService(answerDAO);
 		
@@ -44,14 +44,14 @@ public class AnswerServiceTest {
 		Assert.assertTrue(service.get(testModel.getId()) == testModel);
 	}
 
-	@Test
+	//@Test
 	public void testReadItemDoesntExists() {
 		AnswerService service = new AnswerService(answerDAO);
 		AnswerModel testModel = new AnswerModel(newQ, "test answer", "username");
 		Assert.assertTrue(service.get(testModel.getId()) == null);
 	}
 
-	@Test
+	//@Test
 	public void testUpdateItemExists() {
 
 		AnswerService service = new AnswerService(answerDAO);
@@ -68,7 +68,7 @@ public class AnswerServiceTest {
 
 	}
 
-	@Test
+	//@Test
 	public void testUpdateItemDoesntExists() {
 
 		AnswerService service = new AnswerService(answerDAO);
@@ -77,7 +77,7 @@ public class AnswerServiceTest {
 
 	}
 
-	@Test
+	//@Test
 	public void testDeleteItemExists() {
 
 		AnswerService service = new AnswerService(answerDAO);
@@ -89,7 +89,7 @@ public class AnswerServiceTest {
 
 	}
 
-	@Test
+	//@Test
 	public void testDeleteItemDoesntExists() {
 
 		AnswerService service = new AnswerService(answerDAO);
