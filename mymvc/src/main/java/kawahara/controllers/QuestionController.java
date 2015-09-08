@@ -34,11 +34,8 @@ public class QuestionController{
 	private static final Pattern JS_CAPTURE = Pattern.compile("(<script)([. \\n\\r\\t\\d\\w\\(\\)\\{\\}\\=\\'\\:\\/\\[\\]\\/\\-\\+\\;\\*\\,\\|\\!\\&\\$\\#\\<\\>\"]+)(<\\/script>)");
 	private StringBuilder sb = new StringBuilder();
 
-	@Autowired
 	QuestionService questionService;
-	@Autowired
 	AnswerService answerService;
-	@Autowired
 	UserService userService;
 	
 	public QuestionController(){
