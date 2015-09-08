@@ -74,7 +74,7 @@
 		<property name="userService" value="kawahara.services.UserService"></property>
 	</bean>
 	<bean id="questionController" class="kawahara.controllers.QuestionController">
-		<property name="questionService" ref="questionService"></property>
+		<property name="questionService" value="questionService"></property>
 		<property name="answerService" value="kawahara.services.AnswerService"></property>
 		<property name="userService" value="kawahara.services.UserService"></property>
 	</bean>
