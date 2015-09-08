@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- put your bean definitions here -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context
+   	   http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- the application context definition for the springapp DispatcherServlet -->
+	<context:component-scan base-package="kawahara.db, kawahara.controllers, kawahara.models, kawahara.services" />
+
+	<!-- This defines the controller that our application will be using to service 
+		a request with the corresponding URL mapping of '/hello.htm'. <bean name="/hello" 
+		class="testmvc.HelloController" /> -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!-- Session Factory -->
+	<bean id="localSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="packagesToScan">
+			<list>
+				<value>kawahara.models</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.connection.driver_class">org.postgresql.Driver</prop>
+				<prop key="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</prop>
+				<prop key="hibernate.connection.username">postgres</prop>
+				<prop key="hibernate.connection.password">admin</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Data Access Layer -->
+	<bean id="userDAO" class="kawahara.db.UserDAO">
+		<property name="sessionFactory" ref="localSessionFactory"></property>
+	</bean>
+	<bean id="questionDAO" class="kawahara.db.QuestionDAO">
+		<property name="sessionFactory" ref="localSessionFactory"></property>
+	</bean>
+	<bean id="answerDAO" class="kawahara.db.AnswerDAO">
+		<property name="sessionFactory" ref="localSessionFactory"></property>
+	</bean>
+
+	<!-- Services -->
+	<bean id="userService" class="kawahara.services.UserService">
+		<property name="dao" ref="userDAO"></property>
+	</bean>
+	<bean id="questionService" class="kawahara.services.QuestionService">
+		<property name="dao" ref="questionDAO"></property>
+	</bean>
+	<bean id="answerService" class="kawahara.services.AnswerService">
+		<property name="dao" ref="answerDAO"></property>
+	</bean>
+	<bean id="searchService" class="kawahara.services.SearchService">
+		<property name="questionService" ref="questionService"></property>
+		<property name="answerService" ref="answerService"></property>
+	</bean>
+	
+	<!-- Controllers -->
+	<bean id="userController" class="kawahara.controllers.UserController">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="questionController" class="kawahara.controllers.QuestionController">
+		<property name="questionService" ref="questionService"></property>
+		<property name="answerService" ref="answerService"></property>
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="searchController" class="kawahara.controllers.SearchController">
+		<property name="searchService" ref="searchService"></property>
+	</bean>
+	
+	<!-- Tests -->
+	<bean id="dbTest" class="tests.DBTest">
+	    <property name="sessionFactory" ref="localSessionFactory"></property>
+	</bean>
+</beans>
