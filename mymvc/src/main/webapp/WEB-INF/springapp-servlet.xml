@@ -29,6 +29,8 @@
 		<property name="packagesToScan">
 			<list>
 				<value>kawahara.models</value>
+				<value>kawahara.controllers</value>
+				<value>kawahara.services</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
