@@ -59,7 +59,7 @@ public class UserController {
 			HttpServletResponse response) {
 		if (this.userService != null) {
 			if (this.userService.isEmpty()) {
-				addUsers();
+				//addUsers();
 			}
 		}
 		UserModel possibleUser = userService.get(username);
@@ -103,7 +103,7 @@ public class UserController {
 		System.out.println("FILLING DB IN setUserService");
 		System.out.println("FILLING DB IN setUserService");
 		System.out.println("FILLING DB IN setUserService");
-		addUsers();
+		//addUsers();
 	}
 
 	// public void setRequest(HttpServletRequest request){

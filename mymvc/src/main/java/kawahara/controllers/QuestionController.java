@@ -34,22 +34,15 @@ public class QuestionController{
 	private static final Pattern JS_CAPTURE = Pattern.compile("(<script)([. \\n\\r\\t\\d\\w\\(\\)\\{\\}\\=\\'\\:\\/\\[\\]\\/\\-\\+\\;\\*\\,\\|\\!\\&\\$\\#\\<\\>\"]+)(<\\/script>)");
 	private StringBuilder sb = new StringBuilder();
 
+	@Autowired
 	QuestionService questionService;
+	@Autowired
 	AnswerService answerService;
+	@Autowired
 	UserService userService;
 	
 	public QuestionController(){
-		if(this.questionService != null && this.answerService != null){
-			System.out.println("FILLING DB IN CONSTRUCTOR");
-			System.out.println("FILLING DB IN CONSTRUCTOR");
-			System.out.println("FILLING DB IN CONSTRUCTOR");
-			System.out.println("FILLING DB IN CONSTRUCTOR");
-			System.out.println("FILLING DB IN CONSTRUCTOR");
-			System.out.println("FILLING DB IN CONSTRUCTOR");
-			System.out.println("FILLING DB IN CONSTRUCTOR");
-			System.out.println("FILLING DB IN CONSTRUCTOR");
-//			fillDb();
-		}
+		
 	}
 	public QuestionController(QuestionService questionService, AnswerService answerService, UserService userService){
 		this.questionService = questionService;
@@ -358,7 +351,7 @@ public class QuestionController{
 			System.out.println("FILLING DB IN SETANSWERSERVICE");
 			System.out.println("FILLING DB IN SETANSWERSERVICE");
 			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			fillDb();
+			//fillDb();
 		}
 	}
 	
