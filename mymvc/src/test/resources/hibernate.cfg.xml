@@ -11,7 +11,7 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://ec2-54-235-162-144.compute-1.amazonaws.com:5432/d6ne5r6ksadmfu?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</property>
 		<property name="hibernate.connection.username">qjmbbpdgoaxwqx</property>
 		<property name="hibernate.connection.password">DHzsbUmKGnM4qzQARzIWVQFmBt</property>
-
+		
 		<!-- SQL dialect -->
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 

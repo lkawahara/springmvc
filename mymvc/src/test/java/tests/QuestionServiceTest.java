@@ -1,6 +1,6 @@
 package tests;
 
-import junit.framework.Assert;
+import junit.framework.*;
 import kawahara.db.QuestionDAO;
 import kawahara.models.QuestionModel;
 import kawahara.services.QuestionService;
