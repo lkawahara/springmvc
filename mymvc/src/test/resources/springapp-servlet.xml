@@ -38,7 +38,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.connection.driver_class">org.postgresql.Driver</prop>
-				<prop key="hibernate.connection.url">jdbc:postgresql://ec2-50-19-208-138.compute-1.amazonaws.com:5432/dd4t275g889nr5?user=wrezjhivjfftin&amp;password=rnmoagDMQjTusZ35WAqlaWCCAE&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</prop>
+				<prop key="hibernate.connection.url">jdbc:postgresql://ec2-54-235-162-144.compute-1.amazonaws.com:5432/d6ne5r6ksadmfu?user=qjmbbpdgoaxwqx&amp;password=DHzsbUmKGnM4qzQARzIWVQFmBt&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
