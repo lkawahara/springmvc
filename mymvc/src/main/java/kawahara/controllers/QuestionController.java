@@ -15,6 +15,7 @@ import kawahara.services.AnswerService;
 import kawahara.services.QuestionService;
 import kawahara.services.UserService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +35,11 @@ public class QuestionController{
 	private static final Pattern JS_CAPTURE = Pattern.compile("(<script)([. \\n\\r\\t\\d\\w\\(\\)\\{\\}\\=\\'\\:\\/\\[\\]\\/\\-\\+\\;\\*\\,\\|\\!\\&\\$\\#\\<\\>\"]+)(<\\/script>)");
 	private StringBuilder sb = new StringBuilder();
 
+	@Autowired
 	QuestionService questionService;
+	@Autowired
 	AnswerService answerService;
+	@Autowired
 	UserService userService;
 	
 	public QuestionController(){

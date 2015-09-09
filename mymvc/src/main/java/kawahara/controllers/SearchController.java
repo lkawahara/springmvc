@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class SearchController{
+	@Autowired
 	private SearchService searchService;
 	
 	public SearchController(){

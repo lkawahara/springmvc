@@ -6,8 +6,10 @@ import kawahara.models.AnswerModel;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class AnswerDAO implements Idal<AnswerModel, Long> {
+	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public AnswerDAO(){}

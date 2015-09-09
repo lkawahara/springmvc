@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import kawahara.db.Idal;
 import kawahara.models.AnswerModel;
 
 public class AnswerService {
+	@Autowired
 	private Idal<AnswerModel, Long> dao;
 	
 	public AnswerService(){}

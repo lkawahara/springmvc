@@ -8,12 +8,26 @@ import kawahara.services.QuestionService;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/springapp-servlet.xml" })
 public class QuestionServiceTest {
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	public QuestionServiceTest() {
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 	
 	//@Test
 	public void testCreate() {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		QuestionService service = new QuestionService(new QuestionDAO(sessionFactory));
 		QuestionModel testModel = new QuestionModel("test user", "Heading", "this is a test question.");
 		service.add(testModel);
@@ -22,7 +36,6 @@ public class QuestionServiceTest {
 
 	//@Test
 	public void testReadItemExists() {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		QuestionService service = new QuestionService(new QuestionDAO(sessionFactory));
 		QuestionModel testModel = new QuestionModel("test user", "Heading", "this is a test question.");
 		service.add(testModel);
@@ -31,7 +44,6 @@ public class QuestionServiceTest {
 	
 	@Test
 	public void testReadItemDoesntExists() {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		QuestionService service = new QuestionService(new QuestionDAO(sessionFactory));
 		QuestionModel testModel = new QuestionModel("test user", "Heading", "this is a test question.");
 		Assert.assertTrue(service.get(testModel.getId()) == null);
@@ -39,7 +51,6 @@ public class QuestionServiceTest {
 	
 	//@Test
 	public void testUpdateItemExists() {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		QuestionService service = new QuestionService(new QuestionDAO(sessionFactory));
 		String initialHeading = "test Heading";
 		String initialValue = "this is a test question.";
@@ -56,7 +67,6 @@ public class QuestionServiceTest {
 	
 	//@Test
 	public void testUpdateItemDoesntExists() {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		QuestionService service = new QuestionService(new QuestionDAO(sessionFactory));
 		String initialHeading = "test Heading";
 		String initialValue = "this is a test question.";
@@ -69,7 +79,6 @@ public class QuestionServiceTest {
 	
 	//@Test
 	public void testDeleteItemExists() {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		QuestionService service = new QuestionService(new QuestionDAO(sessionFactory));
 		QuestionModel testModel = new QuestionModel("test user", "Heading", "this is a test question.");
 		service.add(testModel);
@@ -80,7 +89,6 @@ public class QuestionServiceTest {
 
 	//@Test
 	public void testDeleteItemDoesntExists() {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		QuestionService service = new QuestionService(new QuestionDAO(sessionFactory));
 		QuestionModel testModel = new QuestionModel("test user", "Heading", "this is a test question.");
 		long id = testModel.getId();

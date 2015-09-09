@@ -13,17 +13,31 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/springapp-servlet.xml" })
 public class AnswerServiceTest {
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	public AnswerServiceTest() {
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
 	ExecutorService es = Executors.newFixedThreadPool(1);
 	AnswerDAO answerDAO;
 	QuestionModel newQ = new QuestionModel("test username", "test heading", "test question");
 
 	@Before
 	public void setUp() {
-		SessionFactory sf = new Configuration().configure()
-				.buildSessionFactory();
-		answerDAO = new AnswerDAO(sf);
+		answerDAO = new AnswerDAO(sessionFactory);
 	}
 
 	//@Test
@@ -68,7 +82,7 @@ public class AnswerServiceTest {
 
 	}
 
-	//@Test
+	@Test
 	public void testUpdateItemDoesntExists() {
 
 		AnswerService service = new AnswerService(answerDAO);

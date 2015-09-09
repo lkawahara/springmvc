@@ -3,10 +3,13 @@ package kawahara.services;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import kawahara.db.Idal;
 import kawahara.models.QuestionModel;
 
 public class QuestionService {
+	@Autowired
 	private Idal<QuestionModel, Long> dao;
 	
 	public QuestionService(){}

@@ -2,10 +2,13 @@ package kawahara.services;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import kawahara.db.Idal;
 import kawahara.models.UserModel;
 
 public class UserService {	
+	@Autowired
 	private Idal<UserModel, Long> dao;
 	
 	public UserService(){}

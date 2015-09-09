@@ -80,7 +80,8 @@ public class DBTest {
 		Assert.assertEquals(shouldBeUpdated.getQuestion(), newValue);
 	}
 
-	//@Test
+	//
+	@Test
 	public void testDelete() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
