@@ -74,6 +74,11 @@ public class SearchService {
 	}
 	
 	public List<SearchModel> getSearchResults(String search){
-		return searchResultsCache.getUnchecked(search).getResults();
+		try {
+			return ((CacheLoader<String, CachedSearchModel>) searchResultsCache).load(search).getResults();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
