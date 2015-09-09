@@ -79,6 +79,7 @@
 		<property name="questionService" ref="questionService"></property>
 		<property name="answerService" ref="answerService"></property>
 		<property name="userService" ref="userService"></property>
+		<property name="searchService" ref="searchService"></property>
 	</bean>
 	<bean id="searchController" class="kawahara.controllers.SearchController">
 		<property name="searchService" ref="searchService"></property>

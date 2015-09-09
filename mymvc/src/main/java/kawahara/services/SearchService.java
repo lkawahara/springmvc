@@ -33,6 +33,10 @@ public class SearchService {
 			           });
 	}
 	
+	public void clearCache(){
+		searchResultsCache.invalidateAll();
+	}
+	
 	public SearchService(QuestionService questionService, AnswerService answerService){
 		this.questionService = questionService;
 		this.answerService = answerService;

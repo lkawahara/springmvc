@@ -13,6 +13,7 @@ import kawahara.models.AnswerModel;
 import kawahara.models.QuestionModel;
 import kawahara.services.AnswerService;
 import kawahara.services.QuestionService;
+import kawahara.services.SearchService;
 import kawahara.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -41,14 +41,17 @@ public class QuestionController{
 	AnswerService answerService;
 	@Autowired
 	UserService userService;
+	@Autowired 
+	SearchService searchService;
 	
 	public QuestionController(){
 		
 	}
-	public QuestionController(QuestionService questionService, AnswerService answerService, UserService userService){
+	public QuestionController(QuestionService questionService, AnswerService answerService, UserService userService, SearchService searchService){
 		this.questionService = questionService;
 		this.answerService = answerService;
 		this.userService = userService;
+		this.searchService = searchService;
 	}
 	
 	private void incrementTime(Calendar cal){
@@ -140,6 +143,7 @@ public class QuestionController{
 	
 	@RequestMapping(value = "/question/add", method = RequestMethod.GET)
 	private ModelAndView handleAddQuestion(){
+		searchService.clearCache();
 		QuestionModel newQuestion = new QuestionModel(DEFAULT_USERNAME, DEFAULT_HEADING, DEFAULT_VALUE);
 		ModelAndView mv = new ModelAndView();
 		
@@ -164,6 +168,7 @@ public class QuestionController{
 	
 	@RequestMapping(value = "/question/{id}/delete", method = RequestMethod.GET)
 	private ModelAndView handleDeleteQuestion(@PathVariable("id") String id, HttpServletRequest request){
+		searchService.clearCache();
 		ModelAndView mv = new ModelAndView();
 		long idL = Long.parseLong(id);
 		QuestionModel deleteQuestion = questionService.get(idL);
@@ -201,6 +206,7 @@ public class QuestionController{
 	
 	@RequestMapping(value = "/question/{qid}/answer/{aid}/delete", method = RequestMethod.GET)
 	private ModelAndView handleDeleteAnswer(@PathVariable("aid") String aid){
+		searchService.clearCache();
 		long id = Long.parseLong(aid);
 		AnswerModel deleteAnswer = answerService.get(id);
 		answerService.delete(id);
@@ -251,7 +257,7 @@ public class QuestionController{
 	
 	@RequestMapping(value = "/question/{qid}/edit", method = RequestMethod.POST)
 	private ModelAndView handleQuestionPost(HttpServletRequest request, HttpServletResponse response, @PathVariable("qid") String questionid) throws ServletException, IOException{
-
+		searchService.clearCache();
 		ModelAndView mv = new ModelAndView();
 		//can be add or edit depending on id
 		long id = Long.parseLong(questionid);
@@ -285,6 +291,7 @@ public class QuestionController{
 	
 	@RequestMapping(value = "/question/{qid}/answer/{aid}/edit", method = RequestMethod.POST)
 	private ModelAndView handleAnswerPost(@PathVariable("aid") String aid, @PathVariable("qid") String qid, HttpServletRequest request) throws ServletException, IOException{
+		searchService.clearCache();
 		ModelAndView mv = new ModelAndView();
 		long questionId = Long.parseLong(qid);
 		long answerId = Long.parseLong(aid);
@@ -366,5 +373,8 @@ public class QuestionController{
 		this.userService = userService;
 	}
 	
+	public void setSearchService(SearchService searchService){
+		this.searchService = searchService;
+	}
 	
 }
