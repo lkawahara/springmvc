@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="USERS")
@@ -31,14 +30,20 @@ public class UserModel {
 	public UserModel(String name, InputStream is){
 		this.setUsername(name);
 		try {
-		    byte[] b = new byte[1024];
-		    int read = -1;
-		    ByteArrayOutputStream os = new ByteArrayOutputStream();
-		    while ( ( read = is.read(b) ) != -1 ) {
-		    	os.write(b, 0, read);
-		    }
-		    imgBytes = os.toByteArray();
-		    contentLength = imgBytes.length;
+			if(is != null){
+				byte[] b = new byte[1024];
+			    int read = -1;
+			    ByteArrayOutputStream os = new ByteArrayOutputStream();
+			    while ( ( read = is.read(b) ) != -1 ) {
+			    	os.write(b, 0, read);
+			    }
+			    imgBytes = os.toByteArray();
+			    contentLength = imgBytes.length;
+			}else{
+				contentLength = 0;
+				imgBytes = new byte[0];			
+			}
+		    
 		} catch ( IOException e ) {
 			
 		} 
