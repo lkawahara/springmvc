@@ -53,7 +53,8 @@ public class SearchController{
 			int testIndex = Integer.parseInt(request.getParameter(PAGE_I));
 			//clamp index
 			
-			testIndex = (testIndex < 0) ? 0 : ((testIndex > (allSearchResults.size() / ITEMS_PER_PAGE - 1)) ? (allSearchResults.size() / ITEMS_PER_PAGE - 1) : testIndex);
+			int resultSize = (allSearchResults == null) ? 0 : allSearchResults.size();
+			testIndex = (testIndex < 0) ? 0 : ((testIndex > (resultSize / ITEMS_PER_PAGE - 1)) ? (resultSize / ITEMS_PER_PAGE - 1) : testIndex);
 			pageIndex = testIndex;
 		}
 		return pageIndex;
@@ -94,8 +95,9 @@ public class SearchController{
 		//get all search results (from cache or compute)
 		List<SearchModel> allSearchResults = searchService.getSearchResults(requestQuery);
 		int pageIndex = getPageIndex(session, requestQuery, allSearchResults, request);
-		if(pageIndex > allSearchResults.size() - 1) {
-			pageIndex = allSearchResults.size() - 1;
+		int maxIndex = allSearchResults.size() - 1;
+		if(pageIndex > maxIndex) {
+			pageIndex = maxIndex;
 		}
 		return setAttributes(session, requestQuery, pageIndex, allSearchResults);
 	}
