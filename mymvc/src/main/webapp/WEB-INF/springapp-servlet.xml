@@ -28,9 +28,10 @@
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="packagesToScan">
 			<list>
-				<value>kawahara.models</value>
-				<value>kawahara.controllers</value>
-				<value>kawahara.services</value>
+			    <value>kawahara.db</value>
+			    <value>kawahara.models</value>
+			    <value>kawahara.services</value>
+			    <value>kawahara.controllers</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -73,15 +74,15 @@
 	
 	<!-- Controllers -->
 	<bean id="userController" class="kawahara.controllers.UserController">
-		<property name="userService" value="kawahara.services.UserService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 	<bean id="questionController" class="kawahara.controllers.QuestionController">
-		<property name="questionService" value="questionService"></property>
-		<property name="answerService" value="kawahara.services.AnswerService"></property>
-		<property name="userService" value="kawahara.services.UserService"></property>
+		<property name="questionService" ref="questionService"></property>
+		<property name="answerService" ref="answerService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 	<bean id="searchController" class="kawahara.controllers.SearchController">
-		<property name="searchService" value="kawahara.services.SearchService"></property>
+		<property name="searchService" ref="searchService"></property>
 	</bean>
 	
 	<!-- Tests -->
