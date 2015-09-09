@@ -95,6 +95,9 @@ public class SearchController{
 		//get all search results (from cache or compute)
 		List<SearchModel> allSearchResults = searchService.getSearchResults(requestQuery);
 		int pageIndex = getPageIndex(session, requestQuery, allSearchResults, request);
+		if(pageIndex > allSearchResults.size() - 1) {
+			pageIndex = allSearchResults.size() - 1;
+		}
 		return setAttributes(session, requestQuery, pageIndex, allSearchResults);
 	}
 	
