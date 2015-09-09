@@ -344,15 +344,15 @@ public class QuestionController{
 	public void setAnswerService(AnswerService answerService){
 		this.answerService = answerService;
 		if(this.questionService != null && this.answerService != null){
-			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			fillDb();
+//			System.out.println("FILLING DB IN SETANSWERSERVICE");
+//			System.out.println("FILLING DB IN SETANSWERSERVICE");
+//			System.out.println("FILLING DB IN SETANSWERSERVICE");
+//			System.out.println("FILLING DB IN SETANSWERSERVICE");
+//			System.out.println("FILLING DB IN SETANSWERSERVICE");
+//			System.out.println("FILLING DB IN SETANSWERSERVICE");
+//			System.out.println("FILLING DB IN SETANSWERSERVICE");
+//			System.out.println("FILLING DB IN SETANSWERSERVICE");
+//			fillDb();
 		}
 	}
 	
