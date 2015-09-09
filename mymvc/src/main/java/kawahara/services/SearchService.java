@@ -78,7 +78,7 @@ public class SearchService {
 			return ((CacheLoader<String, CachedSearchModel>) searchResultsCache).load(search).getResults();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			return new ArrayList<SearchModel>();
 		}
 	}
 }
