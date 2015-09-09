@@ -32,6 +32,9 @@ public class UserController {
 	}
 
 	private void addUsers() {
+		System.out.println("ADDING USERS");
+		System.out.println("ADDING USERS");
+		System.out.println("ADDING USERS");
 		// add users
 		UserModel patrick = new UserModel("patrick", this.getClass()
 				.getClassLoader()
@@ -57,10 +60,10 @@ public class UserController {
 	@RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
 	private void getUserImage(@PathVariable("username") String username,
 			HttpServletResponse response) {
-		if (this.userService != null) {
-			if (this.userService.isEmpty()) {
-				addUsers();
-			}
+		
+		if (this.userService.isEmpty()) {
+			System.out.println("NO USERS!!");
+			addUsers();
 		}
 		UserModel possibleUser = userService.get(username);
 		InputStream input = null;
@@ -105,8 +108,4 @@ public class UserController {
 		System.out.println("FILLING DB IN setUserService");
 		//addUsers();
 	}
-
-	// public void setRequest(HttpServletRequest request){
-	// this.request = request;
-	// }
 }
