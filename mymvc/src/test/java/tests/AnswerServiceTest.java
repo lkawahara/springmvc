@@ -3,14 +3,13 @@ package tests;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import junit.framework.*;
+import junit.framework.Assert;
 import kawahara.db.AnswerDAO;
 import kawahara.models.AnswerModel;
 import kawahara.models.QuestionModel;
 import kawahara.services.AnswerService;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

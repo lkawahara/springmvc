@@ -83,15 +83,4 @@
 	<bean id="searchController" class="kawahara.controllers.SearchController">
 		<property name="searchService" ref="searchService"></property>
 	</bean>
-	
-	<!-- Tests -->
-	<bean id="dbTest" class="tests.DBTest">
-	    <property name="sessionFactory" ref="localSessionFactory"></property>
-	</bean>
-	<bean id="answerServiceTest" class="tests.AnswerServiceTest">
-	    <property name="sessionFactory" ref="localSessionFactory"></property>
-	</bean>
-	<bean id="questionServiceTest" class="tests.QuestionServiceTest">
-	    <property name="sessionFactory" ref="localSessionFactory"></property>
-	</bean>
 </beans>
