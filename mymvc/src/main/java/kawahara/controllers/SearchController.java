@@ -70,7 +70,7 @@ public class SearchController{
 			int startingDisplayIndex = ITEMS_PER_PAGE * pageIndex;
 			
 			SearchModel [] displayedSearchResults = new SearchModel[ITEMS_PER_PAGE];
-			for(int i = 0; i < ITEMS_PER_PAGE; i++, startingDisplayIndex++){
+			for(int i = 0; (i < ITEMS_PER_PAGE && i < allSearchResults.size()); i++, startingDisplayIndex++){
 				displayedSearchResults[i] = allSearchResults.get(startingDisplayIndex);			
 			}
 			mv.addObject(RESULTS, displayedSearchResults);
