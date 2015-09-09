@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -16,8 +17,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name="QUESTIONS")
+@OnDelete(action = OnDeleteAction.CASCADE)
 @SequenceGenerator(name="seq", initialValue=0, allocationSize=1000)
 public class QuestionModel {
 	@Id
@@ -34,7 +39,7 @@ public class QuestionModel {
 	private List<String> errorMessages = new ArrayList<String>();
 	private StringBuilder sb = new StringBuilder();
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
     @ElementCollection(targetClass=AnswerModel.class)
 	private Set<AnswerModel>answers;
 	

@@ -27,9 +27,8 @@ public class AnswerModel {
 	@Column(name = "ANSWER_ID")
 	private long id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "QUESTION_ID")
-    @OnDelete(action = OnDeleteAction.CASCADE)
 	QuestionModel question;
 
 	public QuestionModel getQuestion() {
