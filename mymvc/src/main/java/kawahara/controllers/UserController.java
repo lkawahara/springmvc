@@ -55,6 +55,10 @@ public class UserController {
 		userService.add(squid);
 		userService.add(krabs);
 		userService.add(sandy);
+		System.out.println("USERS ADDED");
+		System.out.println("USERS ADDED");
+		System.out.println("USERS ADDED");
+		System.out.println("number users: " + userService.getUsers().size());
 	}
 
 	@RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
@@ -106,6 +110,6 @@ public class UserController {
 		System.out.println("FILLING DB IN setUserService");
 		System.out.println("FILLING DB IN setUserService");
 		System.out.println("FILLING DB IN setUserService");
-		//addUsers();
+		addUsers();
 	}
 }
