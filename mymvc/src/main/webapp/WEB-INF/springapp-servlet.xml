@@ -32,6 +32,7 @@
 			    <value>kawahara.models</value>
 			    <value>kawahara.services</value>
 			    <value>kawahara.controllers</value>
+			    <value>kawahara.tests</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
