@@ -29,7 +29,6 @@ public class SearchController{
 		this.searchService = searchService;
 	}
 	
-	
 	public static final Logger LOG = LoggerFactory.getLogger(SearchController.class);
 	public static final int ITEMS_PER_PAGE = 5; //TODO grab and store in session
 	

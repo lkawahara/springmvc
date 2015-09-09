@@ -352,7 +352,7 @@ public class QuestionController{
 			System.out.println("FILLING DB IN SETANSWERSERVICE");
 			System.out.println("FILLING DB IN SETANSWERSERVICE");
 			System.out.println("FILLING DB IN SETANSWERSERVICE");
-			//fillDb();
+			fillDb();
 		}
 	}
 	

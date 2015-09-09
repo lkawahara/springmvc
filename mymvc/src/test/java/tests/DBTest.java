@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/springapp-servlet.xml" })
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "/springapp-servlet.xml" })
 public class DBTest {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -80,8 +80,7 @@ public class DBTest {
 		Assert.assertEquals(shouldBeUpdated.getQuestion(), newValue);
 	}
 
-	//
-	@Test
+	//@Test
 	public void testDelete() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

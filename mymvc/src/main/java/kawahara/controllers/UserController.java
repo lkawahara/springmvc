@@ -59,7 +59,7 @@ public class UserController {
 			HttpServletResponse response) {
 		if (this.userService != null) {
 			if (this.userService.isEmpty()) {
-				//addUsers();
+				addUsers();
 			}
 		}
 		UserModel possibleUser = userService.get(username);
